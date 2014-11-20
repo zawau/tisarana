@@ -1,4 +1,4 @@
-tisarana
+Tisarana
 ========
 
-Website for Tisarana Monastery, Perth, Western Australia.
+Welcome to website development page of Tisarana Monastery, Perth, Western Australia. Please click [here](/wiki/) for more details.
