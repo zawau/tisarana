@@ -1,10 +1,14 @@
 <?php
 
-namespace Tisarana\Test;
+namespace Tisarana\Test\Migrations;
 
 use \Schema;
 
-class DbInitTest extends \TestCase {
+/**
+ * Test the db_init database migration script.
+ */
+class DbInitTest extends \TestCase 
+{
 
 	/**
 	 * Test create "news" table is OK.
@@ -97,7 +101,7 @@ class DbInitTest extends \TestCase {
 	{
         $this->assertTrue(Schema::hasTable('comment'));
         $this->assertTrue(Schema::hasColumn('comment', 'id'));
-        $this->assertTrue(Schema::hasColumn('comment', 'type'));
+        $this->assertTrue(Schema::hasColumn('comment', 'link_object'));
         $this->assertTrue(Schema::hasColumn('comment', 'link'));
         $this->assertTrue(Schema::hasColumn('comment', 'ip'));
         $this->assertTrue(Schema::hasColumn('comment', 'comment'));
@@ -133,7 +137,6 @@ class DbInitTest extends \TestCase {
         $this->assertTrue(Schema::hasColumn('user', 'id'));
         $this->assertTrue(Schema::hasColumn('user', 'first_name'));
         $this->assertTrue(Schema::hasColumn('user', 'last_name'));
-        $this->assertTrue(Schema::hasColumn('user', 'login_name'));
         $this->assertTrue(Schema::hasColumn('user', 'password'));
         $this->assertTrue(Schema::hasColumn('user', 'email'));
         $this->assertTrue(Schema::hasColumn('user', 'suspended_date'));
@@ -165,7 +168,6 @@ class DbInitTest extends \TestCase {
 	public function testCreateGroupMemberTable()
 	{
         $this->assertTrue(Schema::hasTable('group_member'));
-        $this->assertTrue(Schema::hasColumn('group_member', 'id'));
         $this->assertTrue(Schema::hasColumn('group_member', 'group'));
         $this->assertTrue(Schema::hasColumn('group_member', 'user'));
         $this->assertTrue(Schema::hasColumn('group_member', 'creator'));
