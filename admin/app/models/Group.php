@@ -13,6 +13,6 @@ class Group extends Eloquent
  
     public function members()
     {
-        return $this->belongsToMany('User', 'group_member', 'group', 'user');
+        return $this->belongsToMany('User', 'group_member', 'user_id', 'group_id');
     }
 }
