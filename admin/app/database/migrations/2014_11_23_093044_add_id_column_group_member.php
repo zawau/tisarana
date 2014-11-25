@@ -25,7 +25,7 @@ class AddIdColumnGroupMember extends Migration {
 
         Schema::table('group_member', function($table)
         {
-            $table->increments('id')->after();
+            $table->increments('id');
         });
 	}
 
