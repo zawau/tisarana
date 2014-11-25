@@ -38,7 +38,9 @@ class AddIdColumnAcl extends Migration {
 	{
 	    Schema::table('acl', function($table)
         {
-            $table->dropPrimary('PRIMARY');
+            // On MySQL, you do not need to drop the primary key, which is created with column creation.
+            // You only have to drop the column, otherwise, MySQL will give error
+            $table->dropColumn('id');
             $table->dropUnique('acl_principal_principal_type_action_id_unique');
         });
 

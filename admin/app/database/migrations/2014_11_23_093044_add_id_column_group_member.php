@@ -38,7 +38,8 @@ class AddIdColumnGroupMember extends Migration {
 	{
         Schema::table('group_member', function($table)
         {
-            $table->dropPrimary('PRIMARY');
+            // On MySQL, you do not need to drop the primary key, which is created with column creation.
+            // You only have to drop the column, otherwise, MySQL will give error
             $table->dropColumn('id');
             $table->dropUnique('group_member_group_id_user_id_unique');
         });
