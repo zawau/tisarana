@@ -21,6 +21,7 @@ class RenameLinkColumnComment extends Migration {
             $table->renameColumn('link', 'link_object_id');
         });
          */
+        DB::statement('ALTER TABLE `comment` DROP INDEX comment_link_index');
         DB::statement('ALTER TABLE `comment` CHANGE `link` `link_object_id` INT UNSIGNED NOT NULL');
 	}
 
@@ -38,5 +39,6 @@ class RenameLinkColumnComment extends Migration {
         });
         */
         DB::statement('ALTER TABLE `comment` CHANGE `link_object_id` `link` INT UNSIGNED NOT NULL');
+        DB::statement('ALTER TABLE `comment` ADD INDEX comment_link_index (link)');
 	}
 }

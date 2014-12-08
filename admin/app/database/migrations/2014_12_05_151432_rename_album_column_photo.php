@@ -12,9 +12,11 @@ class RenameAlbumColumnPhoto extends Migration {
 	 */
 	public function up()
 	{
+        DB::statement('ALTER TABLE `photo` DROP INDEX photo_album_index');
         Schema::table('photo', function($table)
         {
             $table->renameColumn('album', 'album_id');
+            $table->index('album_id');
         });
 	}
 
@@ -25,9 +27,11 @@ class RenameAlbumColumnPhoto extends Migration {
 	 */
 	public function down()
 	{
+        DB::statement('ALTER TABLE `photo` DROP INDEX photo_album_id_index'); 
         Schema::table('photo', function($table)
         {
             $table->renameColumn('album_id', 'album');
+            $table->index('album');
         });
 	}
 

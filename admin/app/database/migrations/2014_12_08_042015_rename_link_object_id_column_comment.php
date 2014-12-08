@@ -16,6 +16,7 @@ class RenameLinkObjectIdColumnComment extends Migration {
 	 */
 	public function up()
 	{
+        DB::statement('ALTER TABLE `comment` DROP INDEX comment_link_object_id_link_object_type_unique');
         Schema::table('comment', function($table)
         {
             $table->renameColumn('link_object_id', 'target_id');
@@ -32,7 +33,7 @@ class RenameLinkObjectIdColumnComment extends Migration {
         Schema::table('comment', function($table)
         {
             $table->renameColumn('target_id', 'link_object_id');
+            $table->unique(['link_object_id', 'link_object_type']);
         });
 	}
-
 }
